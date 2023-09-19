@@ -30,8 +30,8 @@ CREATE TABLE completionsoptions
 (
   idcopmletion UUID,
   idcaroption UUID,
-  FOREIGN KEY (idcopmletion) REFERENCES completions (id),
-  FOREIGN KEY (idcaroption) REFERENCES caroptions (id)
+  FOREIGN KEY (idcopmletion) REFERENCES completions (id) ON DELETE CASCADE,
+  FOREIGN KEY (idcaroption) REFERENCES caroptions (id) ON DELETE CASCADE
 );
 
 CREATE TABLE models 
@@ -40,7 +40,7 @@ CREATE TABLE models
 	modelname TEXT NOT NULL,
   	idcopmletion UUID,
   	PRIMARY KEY (id),
-  	FOREIGN KEY (idcopmletion) REFERENCES completions (id)
+  	FOREIGN KEY (idcopmletion) REFERENCES completions (id) ON DELETE CASCADE
 );
 
 CREATE TABLE cars
@@ -49,7 +49,7 @@ CREATE TABLE cars
   	vin TEXT NOT NULL,
   	idmodel UUID,
   	PRIMARY KEY (id),
-  	FOREIGN KEY (idmodel) REFERENCES models (id)
+  	FOREIGN KEY (idmodel) REFERENCES models (id) ON DELETE CASCADE
 );
 
 CREATE TABLE orders
@@ -59,6 +59,6 @@ CREATE TABLE orders
   	idcustomer UUID,
   	idcar UUID,
   	PRIMARY KEY (id),
-  	FOREIGN KEY (idcustomer) REFERENCES customers (id),
-  	FOREIGN KEY (idcar) REFERENCES cars (id)
+  	FOREIGN KEY (idcustomer) REFERENCES customers (id) ON DELETE CASCADE,
+  	FOREIGN KEY (idcar) REFERENCES cars (id) ON DELETE CASCADE
 );

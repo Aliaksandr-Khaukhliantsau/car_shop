@@ -5,8 +5,8 @@ public class Main {
     private static final String POSTGRES_URL = "jdbc:postgresql://localhost:5432/car_shop";
     private static final String POSTGRES_USER = "postgres";
     private static final String POSTGRES_PASSWORD = "12345678";
-    private static final String SQL_SHOW_ALL_CUSTOMERS = "SELECT * FROM customers ORDER BY secondname ASC";
-    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (?, ?, ?)";
+    private static final String SQL_SHOW_ALL_CUSTOMERS = "SELECT * FROM customers ORDER BY secondname ASC;";
+    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (?, ?, ?);";
 
 
     public static void main(String[] args) throws SQLException {
@@ -59,7 +59,7 @@ public class Main {
                     } else if (userCommand == 1) {
                         System.out.println("Insert the id:");
                         String idCustomer = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_ID = "SELECT * FROM customers WHERE id = " + "'" + idCustomer + "'" + " ORDER BY secondname ASC";
+                        String SQL_SHOW_CUSTOMERS_BY_ID = "SELECT * FROM customers WHERE id = " + "'" + idCustomer + "'" + " ORDER BY secondname ASC;";
                         Statement statement = connection.createStatement();
                         ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_ID);
 
@@ -75,7 +75,7 @@ public class Main {
                     } else if (userCommand == 2) {
                         System.out.println("Insert the second name:");
                         String secondName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = " + "'" + secondName + "'" + " ORDER BY secondname ASC";
+                        String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = " + "'" + secondName + "'" + " ORDER BY secondname ASC;";
                         Statement statement = connection.createStatement();
                         ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_SECOND_NAME);
 
@@ -91,7 +91,7 @@ public class Main {
                     } else if (userCommand == 3) {
                         System.out.println("Insert the first name:");
                         String firstName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = " + "'" + firstName + "'" + " ORDER BY secondname ASC";
+                        String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = " + "'" + firstName + "'" + " ORDER BY secondname ASC;";
                         Statement statement = connection.createStatement();
                         ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_FIRST_NAME);
 
@@ -107,7 +107,7 @@ public class Main {
                     } else if (userCommand == 4) {
                         System.out.println("Insert the middle name:");
                         String middleName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = '" + middleName + "' ORDER BY secondname ASC";
+                        String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = '" + middleName + "' ORDER BY secondname ASC;";
                         Statement statement = connection.createStatement();
                         ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME);
 
@@ -127,7 +127,7 @@ public class Main {
             } else if (userCommand == 3) {
                 System.out.println("Insert the customer's id:");
                 String idCustomer = scanner.next();
-                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "'";
+                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "';";
                 PreparedStatement preparedStatement = connection.prepareStatement(SQL_CHANGE_A_CUSTOMER);
                 for (int i = 1; i < 4; i++) {
                     if (i == 1) {
@@ -160,7 +160,7 @@ public class Main {
             } else if (userCommand == 5) { // возможно придется сделать каскадное удаление записи!!!
                 System.out.println("Insert the customer's id:");
                 String idCustomer = scanner.next();
-                String SQL_DELETE_A_CUSTOMER = "DELETE FROM customers WHERE id = '" + idCustomer + "' RETURNING *";
+                String SQL_DELETE_A_CUSTOMER = "DELETE FROM customers WHERE id = '" + idCustomer + "' RETURNING *;";
                 Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery(SQL_DELETE_A_CUSTOMER);
                 System.out.println("Customer's record deleted:");
