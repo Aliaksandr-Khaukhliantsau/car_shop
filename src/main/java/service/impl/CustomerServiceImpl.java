@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
-
     public CustomerServiceImpl() throws SQLException {
     }
 
@@ -18,18 +17,136 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers() throws SQLException {
-        ResultSet allCustomers = customerRepository.getAllCustomers();
+        ResultSet resultSet = customerRepository.getAllCustomers();
         List<Customer> customerList = new ArrayList<>();
 
-        while (allCustomers.next()) {
+        while (resultSet.next()) {
             Customer customer = new Customer();
-            customer.setId(allCustomers.getString("id"));
-            customer.setSecondName(allCustomers.getString("secondname"));
-            customer.setFirstName(allCustomers.getString("firstname") );
-            customer.setMiddleName(allCustomers.getString("middlename"));
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
 
             customerList.add(customer);
+        }
+        return customerList;
+    }
 
+    @Override
+    public List<Customer> getById(String id) throws SQLException {
+        ResultSet resultSet = customerRepository.getById(id);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> getByFirstName(String firstName) throws SQLException {
+        ResultSet resultSet = customerRepository.getByFirstName(firstName);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> getBySecondName(String lastName) throws SQLException {
+        ResultSet resultSet = customerRepository.getBySecondName(lastName);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> getByMiddleName(String middleName) throws SQLException {
+        ResultSet resultSet = customerRepository.getByMiddleName(middleName);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> create(String firstName, String lastName, String middleName) throws SQLException {
+        ResultSet resultSet = customerRepository.create(firstName, lastName, middleName);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> update(String id, String firstName, String lastName, String middleName) throws SQLException {
+        ResultSet resultSet = customerRepository.update(id, firstName, lastName, middleName);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
+        }
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> delete(String id) throws SQLException {
+        ResultSet resultSet = customerRepository.delete(id);
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(resultSet.getString("id"));
+            customer.setLastName(resultSet.getString("secondname"));
+            customer.setFirstName(resultSet.getString("firstname") );
+            customer.setMiddleName(resultSet.getString("middlename"));
+
+            customerList.add(customer);
         }
         return customerList;
     }

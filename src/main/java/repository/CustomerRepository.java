@@ -11,13 +11,13 @@ public interface CustomerRepository {
 
     ResultSet getByFirstName(String firstName) throws SQLException;
 
-    ResultSet getBySecondName(String secondName) throws SQLException;
+    ResultSet getBySecondName(String lastName) throws SQLException;
 
     ResultSet getByMiddleName(String middleName) throws SQLException;
 
-    ResultSet create(String firstName, String secondName, String middleName) throws SQLException;
+    ResultSet create(String firstName, String lastName, String middleName) throws SQLException;
 
-    ResultSet update(String id, String firstName, String secondName, String middleName) throws SQLException;
+    ResultSet update(String id, String firstName, String lastName, String middleName) throws SQLException;
 
     ResultSet delete(String id) throws SQLException;
 
