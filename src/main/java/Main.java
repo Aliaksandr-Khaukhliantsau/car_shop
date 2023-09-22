@@ -6,7 +6,10 @@ public class Main {
     private static final String POSTGRES_USER = "postgres";
     private static final String POSTGRES_PASSWORD = "12345678";
     private static final String SQL_SHOW_ALL_CUSTOMERS = "SELECT * FROM customers ORDER BY secondname ASC;";
-    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (?, ?, ?);";
+    private static final String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = ? ORDER BY secondname ASC;";
+    private static final String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = ? ORDER BY secondname ASC;";
+    private static final String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = ? ORDER BY secondname ASC;";
+    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (?, ?, ?) RETURNING *;";
 
 
     public static void main(String[] args) throws SQLException {
@@ -85,53 +88,53 @@ public class Main {
                         // Выборка по фамилии
                         System.out.println("Insert the second name:");
                         String secondName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = " + "'" + secondName + "'" + " ORDER BY secondname ASC;";
-                        Statement statement = connection.createStatement();
-                        ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_SECOND_NAME);
+                        PreparedStatement preparedStatement = connection.prepareStatement(SQL_SHOW_CUSTOMERS_BY_SECOND_NAME);
+                        preparedStatement.setString(1, secondName);
+                        ResultSet resultSet = preparedStatement.executeQuery();
 
-                        while (result.next()) {
-                            System.out.println(result.getString("id") + " " +
-                                    result.getString("secondname") + " " +
-                                    result.getString("firstname") + " " +
-                                    result.getString("middlename"));
+                        while (resultSet.next()) {
+                            System.out.println(resultSet.getString("id") + " " +
+                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("firstname") + " " +
+                                    resultSet.getString("middlename"));
                         }
                         System.out.println();
-                        result.close();
-                        statement.close();
+                        resultSet.close();
+                        preparedStatement.close();
                     } else if (userCommand == 3) {
                         // Выборка по имени
                         System.out.println("Insert the first name:");
                         String firstName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = " + "'" + firstName + "'" + " ORDER BY secondname ASC;";
-                        Statement statement = connection.createStatement();
-                        ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_FIRST_NAME);
+                        PreparedStatement preparedStatement = connection.prepareStatement(SQL_SHOW_CUSTOMERS_BY_FIRST_NAME);
+                        preparedStatement.setString(1, firstName);
+                        ResultSet resultSet = preparedStatement.executeQuery();
 
-                        while (result.next()) {
-                            System.out.println(result.getString("id") + " " +
-                                    result.getString("secondname") + " " +
-                                    result.getString("firstname") + " " +
-                                    result.getString("middlename"));
+                        while (resultSet.next()) {
+                            System.out.println(resultSet.getString("id") + " " +
+                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("firstname") + " " +
+                                    resultSet.getString("middlename"));
                         }
                         System.out.println();
-                        result.close();
-                        statement.close();
+                        resultSet.close();
+                        preparedStatement.close();
                     } else if (userCommand == 4) {
                         // Выборка по отчеству
                         System.out.println("Insert the middle name:");
                         String middleName = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = '" + middleName + "' ORDER BY secondname ASC;";
-                        Statement statement = connection.createStatement();
-                        ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME);
+                        PreparedStatement preparedStatement = connection.prepareStatement(SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME);
+                        preparedStatement.setString(1, middleName);
+                        ResultSet resultSet = preparedStatement.executeQuery();
 
-                        while (result.next()) {
-                            System.out.println(result.getString("id") + " " +
-                                    result.getString("secondname") + " " +
-                                    result.getString("firstname") + " " +
-                                    result.getString("middlename"));
+                        while (resultSet.next()) {
+                            System.out.println(resultSet.getString("id") + " " +
+                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("firstname") + " " +
+                                    resultSet.getString("middlename"));
                         }
                         System.out.println();
-                        result.close();
-                        statement.close();
+                        resultSet.close();
+                        preparedStatement.close();
                     } else {
                         System.err.println("Unknown Command!\n");
                     }
@@ -140,7 +143,7 @@ public class Main {
                 // Изменить клиента
                 System.out.println("Insert the customer's id:");
                 String idCustomer = scanner.next();
-                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "';";
+                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "' RETURNING *;";
                 PreparedStatement preparedStatement = connection.prepareStatement(SQL_CHANGE_A_CUSTOMER);
                 // Ввести новые данные клиента
                 for (int i = 1; i < 4; i++) {
@@ -154,7 +157,17 @@ public class Main {
                     String dataAboutTheNewCustomer = scanner.next();
                     preparedStatement.setString(i, dataAboutTheNewCustomer);
                 }
-                preparedStatement.executeUpdate();
+                ResultSet resultSet = preparedStatement.executeQuery();
+                System.out.println("The customer's record has been changed:");
+
+                while (resultSet.next()) {
+                    System.out.println(resultSet.getString("id") + " " +
+                            resultSet.getString("secondname") + " " +
+                            resultSet.getString("firstname") + " " +
+                            resultSet.getString("middlename"));
+                }
+                System.out.println();
+                resultSet.close();
                 preparedStatement.close();
             } else if (userCommand == 4) {
                 // Добавить нового клиента
@@ -171,7 +184,17 @@ public class Main {
                     String dataAboutTheNewCustomer = scanner.next();
                     preparedStatement.setString(i, dataAboutTheNewCustomer);
                 }
-                preparedStatement.executeUpdate();
+                ResultSet resultSet = preparedStatement.executeQuery();
+                System.out.println("New customer's record has been added:");
+
+                while (resultSet.next()) {
+                    System.out.println(resultSet.getString("id") + " " +
+                            resultSet.getString("secondname") + " " +
+                            resultSet.getString("firstname") + " " +
+                            resultSet.getString("middlename"));
+                }
+                System.out.println();
+                resultSet.close();
                 preparedStatement.close();
             } else if (userCommand == 5) {
                 // Удалить клиента
@@ -181,7 +204,7 @@ public class Main {
                 Statement statement = connection.createStatement();
                 // объект, который содержит результат SQL запроса
                 ResultSet result = statement.executeQuery(SQL_DELETE_A_CUSTOMER);
-                System.out.println("Customer's record deleted:");
+                System.out.println("The customer's record has been deleted:");
 
                 while (result.next()) {
                     System.out.println(result.getString("id") + " " +
