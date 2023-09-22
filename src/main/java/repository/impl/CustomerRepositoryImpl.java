@@ -57,7 +57,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public ResultSet create(String firstName, String secondName, String middleName) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (" + secondName + ", " + firstName + ", " + middleName + ");";
+        String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (" + secondName + ", " + firstName + ", " + middleName + ") RETURNING *;";
         ResultSet resultSet = statement.executeQuery(SQL_ADD_A_NEW_CUSTOMER);
         statement.close();
         return resultSet;
@@ -66,7 +66,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public ResultSet update(String id, String firstName, String secondName, String middleName) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = " + secondName + ", firstname = " + firstName + ", middlename = " + middleName + " WHERE id = '" + id + "';";
+        String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = " + secondName + ", firstname = " + firstName + ", middlename = " + middleName + " WHERE id = '" + id + "' RETURNING *;";
         ResultSet resultSet = statement.executeQuery(SQL_CHANGE_A_CUSTOMER);
         statement.close();
         return resultSet;
@@ -84,8 +84,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public ResultSet getAllCustomers() throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery(SQL_SHOW_ALL_CUSTOMERS);
+        ResultSet resultSet = statement.executeQuery(SQL_SHOW_ALL_CUSTOMERS);
         statement.close();
-        return result;
+        return resultSet;
     }
 }
