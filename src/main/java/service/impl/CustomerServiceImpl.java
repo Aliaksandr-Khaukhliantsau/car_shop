@@ -67,8 +67,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getBySecondName(String lastName) throws SQLException {
-        ResultSet resultSet = customerRepository.getBySecondName(lastName);
+    public List<Customer> getByLastName(String lastName) throws SQLException {
+        ResultSet resultSet = customerRepository.getByLastName(lastName);
         List<Customer> customerList = new ArrayList<>();
 
         while (resultSet.next()) {

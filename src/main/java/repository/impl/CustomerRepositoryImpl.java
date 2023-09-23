@@ -34,10 +34,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public ResultSet getBySecondName(String lastName) throws SQLException {
+    public ResultSet getByLastName(String lastName) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = " + "'" + lastName + "'" + " ORDER BY secondname ASC;";
-        ResultSet resultSet = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_SECOND_NAME);
+        String SQL_SHOW_CUSTOMERS_BY_LAST_NAME = "SELECT * FROM customers WHERE secondname = " + "'" + lastName + "'" + " ORDER BY secondname ASC;";
+        ResultSet resultSet = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_LAST_NAME);
 //        statement.close();
         return resultSet;
     }

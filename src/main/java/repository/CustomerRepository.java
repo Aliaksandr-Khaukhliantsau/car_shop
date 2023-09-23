@@ -11,7 +11,7 @@ public interface CustomerRepository {
 
     ResultSet getByFirstName(String firstName) throws SQLException;
 
-    ResultSet getBySecondName(String lastName) throws SQLException;
+    ResultSet getByLastName(String lastName) throws SQLException;
 
     ResultSet getByMiddleName(String middleName) throws SQLException;
 

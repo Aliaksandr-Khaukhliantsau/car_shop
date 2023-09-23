@@ -12,7 +12,7 @@ public interface CustomerService {
 
     List<Customer> getByFirstName(String firstName) throws SQLException;
 
-    List<Customer> getBySecondName(String lastName) throws SQLException;
+    List<Customer> getByLastName(String lastName) throws SQLException;
 
     List<Customer> getByMiddleName(String middleName) throws SQLException;
 
