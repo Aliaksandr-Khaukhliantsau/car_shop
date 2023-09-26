@@ -2,16 +2,16 @@ package entity;
 
 public class Order {
     private String id;
-    private int orderNumber;
+    private int number;
     private String idUser;
     private String idCar;
 
     public Order() {
     }
 
-    public Order(String id, int orderNumber, String idUser, String idCar) {
+    public Order(String id, int number, String idUser, String idCar) {
         this.id = id;
-        this.orderNumber = orderNumber;
+        this.number = number;
         this.idUser = idUser;
         this.idCar = idCar;
     }
@@ -24,12 +24,12 @@ public class Order {
         this.id = id;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getNumber() {
+        return number;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getIdUser() {
@@ -52,7 +52,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id='" + id + '\'' +
-                ", orderNumber=" + orderNumber +
+                ", number=" + number +
                 ", idUser='" + idUser + '\'' +
                 ", idCar='" + idCar + '\'' +
                 '}';

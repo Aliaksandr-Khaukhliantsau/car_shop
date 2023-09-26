@@ -3,17 +3,17 @@ package entity;
 public class Customer {
     private String id;
     private String firstName;
-    private String lastName;
     private String middleName;
+    private String lastName;
 
     public Customer() {
     }
 
-    public Customer(String id, String firstName, String lastName, String middleName) {
+    public Customer(String id, String firstName, String middleName, String lastName) {
         this.id = id;
         this.firstName = firstName;
-        this.lastName = lastName;
         this.middleName = middleName;
+        this.lastName = lastName;
     }
 
     public String getId() {
@@ -32,14 +32,6 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getMiddleName() {
         return middleName;
     }
@@ -48,13 +40,21 @@ public class Customer {
         this.middleName = middleName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @Override
     public String toString() {
-        return "Customers{" +
+        return "Customer{" +
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
                 ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

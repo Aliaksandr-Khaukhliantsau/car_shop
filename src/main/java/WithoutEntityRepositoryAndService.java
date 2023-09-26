@@ -6,11 +6,11 @@ public class WithoutEntityRepositoryAndService {
     private static final String POSTGRES_URL = "jdbc:postgresql://localhost:5432/car_shop";
     private static final String POSTGRES_USER = "postgres";
     private static final String POSTGRES_PASSWORD = "12345678";
-    private static final String SQL_SHOW_ALL_CUSTOMERS = "SELECT * FROM customers ORDER BY secondname ASC;";
-    private static final String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = ? ORDER BY secondname ASC;";
-    private static final String SQL_SHOW_CUSTOMERS_BY_SECOND_NAME = "SELECT * FROM customers WHERE secondname = ? ORDER BY secondname ASC;";
-    private static final String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = ? ORDER BY secondname ASC;";
-    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (secondname, firstname, middlename) VALUES (?, ?, ?) RETURNING *;";
+    private static final String SQL_SHOW_ALL_CUSTOMERS = "SELECT * FROM customers ORDER BY lastname ASC;";
+    private static final String SQL_SHOW_CUSTOMERS_BY_FIRST_NAME = "SELECT * FROM customers WHERE firstname = ? ORDER BY lastname ASC;";
+    private static final String SQL_SHOW_CUSTOMERS_BY_LAST_NAME = "SELECT * FROM customers WHERE lastname = ? ORDER BY lastname ASC;";
+    private static final String SQL_SHOW_CUSTOMERS_BY_MIDDLE_NAME = "SELECT * FROM customers WHERE middlename = ? ORDER BY lastname ASC;";
+    private static final String SQL_ADD_A_NEW_CUSTOMER = "INSERT INTO customers (lastname, firstname, middlename) VALUES (?, ?, ?) RETURNING *;";
 
 
     public static void main(String[] args) throws SQLException {
@@ -43,7 +43,7 @@ public class WithoutEntityRepositoryAndService {
 
                 while (result.next()) {
                     System.out.println(result.getString("id") + " " +
-                            result.getString("secondname") + " " +
+                            result.getString("lastname") + " " +
                             result.getString("firstname") + " " +
                             result.getString("middlename"));
                 }
@@ -56,7 +56,7 @@ public class WithoutEntityRepositoryAndService {
                 while (true) {
                     System.out.println("Select a sample");
                     System.out.println("1 - id");
-                    System.out.println("2 - Second name");
+                    System.out.println("2 - Last name");
                     System.out.println("3 - First name");
                     System.out.println("4 - Middle name");
                     System.out.println("0 - Back to the previous menu");
@@ -71,14 +71,14 @@ public class WithoutEntityRepositoryAndService {
                         // Выборка по id
                         System.out.println("Insert the id:");
                         String idCustomer = scanner.next();
-                        String SQL_SHOW_CUSTOMERS_BY_ID = "SELECT * FROM customers WHERE id = " + "'" + idCustomer + "'" + " ORDER BY secondname ASC;";
+                        String SQL_SHOW_CUSTOMERS_BY_ID = "SELECT * FROM customers WHERE id = " + "'" + idCustomer + "'" + " ORDER BY lastname ASC;";
                         Statement statement = connection.createStatement();
                         // объект, который содержит результат SQL запроса
                         ResultSet result = statement.executeQuery(SQL_SHOW_CUSTOMERS_BY_ID);
 
                         while (result.next()) {
                             System.out.println(result.getString("id") + " " +
-                                    result.getString("secondname") + " " +
+                                    result.getString("lastname") + " " +
                                     result.getString("firstname") + " " +
                                     result.getString("middlename"));
                         }
@@ -87,15 +87,15 @@ public class WithoutEntityRepositoryAndService {
                         statement.close();
                     } else if (userCommand == 2) {
                         // Выборка по фамилии
-                        System.out.println("Insert the second name:");
-                        String secondName = scanner.next();
-                        PreparedStatement preparedStatement = connection.prepareStatement(SQL_SHOW_CUSTOMERS_BY_SECOND_NAME);
-                        preparedStatement.setString(1, secondName);
+                        System.out.println("Insert the last name:");
+                        String lastName = scanner.next();
+                        PreparedStatement preparedStatement = connection.prepareStatement(SQL_SHOW_CUSTOMERS_BY_LAST_NAME);
+                        preparedStatement.setString(1, lastName);
                         ResultSet resultSet = preparedStatement.executeQuery();
 
                         while (resultSet.next()) {
                             System.out.println(resultSet.getString("id") + " " +
-                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("lastname") + " " +
                                     resultSet.getString("firstname") + " " +
                                     resultSet.getString("middlename"));
                         }
@@ -112,7 +112,7 @@ public class WithoutEntityRepositoryAndService {
 
                         while (resultSet.next()) {
                             System.out.println(resultSet.getString("id") + " " +
-                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("lastname") + " " +
                                     resultSet.getString("firstname") + " " +
                                     resultSet.getString("middlename"));
                         }
@@ -129,7 +129,7 @@ public class WithoutEntityRepositoryAndService {
 
                         while (resultSet.next()) {
                             System.out.println(resultSet.getString("id") + " " +
-                                    resultSet.getString("secondname") + " " +
+                                    resultSet.getString("lastname") + " " +
                                     resultSet.getString("firstname") + " " +
                                     resultSet.getString("middlename"));
                         }
@@ -144,7 +144,7 @@ public class WithoutEntityRepositoryAndService {
                 // Изменить клиента
                 System.out.println("Insert the customer's id:");
                 String idCustomer = scanner.next();
-                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET secondname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "' RETURNING *;";
+                String SQL_CHANGE_A_CUSTOMER = "UPDATE customers SET lastname = ?, firstname = ?, middlename = ? WHERE id = '" + idCustomer + "' RETURNING *;";
                 PreparedStatement preparedStatement = connection.prepareStatement(SQL_CHANGE_A_CUSTOMER);
                 // Ввести новые данные клиента
                 for (int i = 1; i < 4; i++) {
@@ -163,7 +163,7 @@ public class WithoutEntityRepositoryAndService {
 
                 while (resultSet.next()) {
                     System.out.println(resultSet.getString("id") + " " +
-                            resultSet.getString("secondname") + " " +
+                            resultSet.getString("lastname") + " " +
                             resultSet.getString("firstname") + " " +
                             resultSet.getString("middlename"));
                 }
@@ -190,7 +190,7 @@ public class WithoutEntityRepositoryAndService {
 
                 while (resultSet.next()) {
                     System.out.println(resultSet.getString("id") + " " +
-                            resultSet.getString("secondname") + " " +
+                            resultSet.getString("lastname") + " " +
                             resultSet.getString("firstname") + " " +
                             resultSet.getString("middlename"));
                 }
@@ -209,7 +209,7 @@ public class WithoutEntityRepositoryAndService {
 
                 while (result.next()) {
                     System.out.println(result.getString("id") + " " +
-                            result.getString("secondname") + " " +
+                            result.getString("lastname") + " " +
                             result.getString("firstname") + " " +
                             result.getString("middlename"));
                 }

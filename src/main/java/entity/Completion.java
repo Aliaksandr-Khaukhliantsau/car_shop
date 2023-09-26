@@ -2,14 +2,14 @@ package entity;
 
 public class Completion {
     private String id;
-    private String completionName;
+    private String name;
 
     public Completion() {
     }
 
-    public Completion(String id, String completionName) {
+    public Completion(String id, String name) {
         this.id = id;
-        this.completionName = completionName;
+        this.name = name;
     }
 
     public String getId() {
@@ -20,19 +20,19 @@ public class Completion {
         this.id = id;
     }
 
-    public String getCompletionName() {
-        return completionName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompletionName(String completionName) {
-        this.completionName = completionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Completion{" +
                 "id='" + id + '\'' +
-                ", completionName='" + completionName + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

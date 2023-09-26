@@ -1,6 +1,7 @@
 import entity.Customer;
 import service.CustomerService;
 import service.impl.CustomerServiceImpl;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -43,8 +44,8 @@ public class Main {
                     System.out.println("Select a sample");
                     System.out.println("1 - id");
                     System.out.println("2 - First name");
-                    System.out.println("3 - Last name");
-                    System.out.println("4 - Middle name");
+                    System.out.println("3 - Middle name");
+                    System.out.println("4 - Last name");
                     System.out.println("0 - Back to the previous menu");
 
                     userCommand = scanner.nextInt();
@@ -78,11 +79,11 @@ public class Main {
                         System.out.println();
 
                     } else if (userCommand == 3) {
-                        // Выборка по фамилии
-                        System.out.println("Enter the last name:");
-                        String secondName = scanner.next();
+                        // Выборка по отчеству
+                        System.out.println("Enter the middle name:");
+                        String middleName = scanner.next();
 
-                        List<Customer> customerList = customerService.getByLastName(secondName);
+                        List<Customer> customerList = customerService.getByMiddleName(middleName);
 
                         for (Customer customer : customerList) {
                             System.out.println(customer);
@@ -90,11 +91,11 @@ public class Main {
                         System.out.println();
 
                     } else if (userCommand == 4) {
-                        // Выборка по отчеству
-                        System.out.println("Enter the middle name:");
-                        String middleName = scanner.next();
+                        // Выборка по фамилии
+                        System.out.println("Enter the last name:");
+                        String lastName = scanner.next();
 
-                        List<Customer> customerList = customerService.getByMiddleName(middleName);
+                        List<Customer> customerList = customerService.getByLastName(lastName);
 
                         for (Customer customer : customerList) {
                             System.out.println(customer);
@@ -110,12 +111,12 @@ public class Main {
                 // Создать нового клиента
                 System.out.println("Enter the first name of the new customer:");
                 String firstName = scanner.next();
-                System.out.println("Enter the last name of the new customer:");
-                String lastName = scanner.next();
                 System.out.println("Enter the middle name of the new customer:");
                 String middleName = scanner.next();
+                System.out.println("Enter the last name of the new customer:");
+                String lastName = scanner.next();
 
-                List<Customer> customerList = customerService.create(firstName, lastName, middleName);
+                List<Customer> customerList = customerService.create(firstName, middleName, lastName);
 
                 System.out.println("New customer's record has been created:");
                 for (Customer customer : customerList) {
@@ -129,12 +130,12 @@ public class Main {
                 String id = scanner.next();
                 System.out.println("Enter a new first name for the customer's record to edit:");
                 String firstName = scanner.next();
-                System.out.println("Enter a new last name for the customer's record to edit:");
-                String lastName = scanner.next();
                 System.out.println("Enter a new middle name for the customer's record to edit:");
                 String middleName = scanner.next();
+                System.out.println("Enter a new last name for the customer's record to edit:");
+                String lastName = scanner.next();
 
-                List<Customer> customerList = customerService.update(id, firstName, lastName, middleName);
+                List<Customer> customerList = customerService.update(id, firstName, middleName, lastName);
 
                 System.out.println("The customer's record has been changed:");
                 for (Customer customer : customerList) {

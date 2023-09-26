@@ -2,15 +2,15 @@ package entity;
 
 public class Model {
     private String id;
-    private String modelName;
+    private String name;
     private String idCompletion;
 
     public Model() {
     }
 
-    public Model(String id, String modelName, String idCompletion) {
+    public Model(String id, String name, String idCompletion) {
         this.id = id;
-        this.modelName = modelName;
+        this.name = name;
         this.idCompletion = idCompletion;
     }
 
@@ -22,12 +22,12 @@ public class Model {
         this.id = id;
     }
 
-    public String getModelName() {
-        return modelName;
+    public String getName() {
+        return name;
     }
 
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getIdCompletion() {
@@ -42,7 +42,7 @@ public class Model {
     public String toString() {
         return "Model{" +
                 "id='" + id + '\'' +
-                ", modelName='" + modelName + '\'' +
+                ", name='" + name + '\'' +
                 ", idCompletion='" + idCompletion + '\'' +
                 '}';
     }

@@ -1,13 +1,13 @@
 package entity;
 
-public class CompletionCarOption {
+public class CompletionOption {
     private String idCompletion;
     private String idOption;
 
-    public CompletionCarOption() {
+    public CompletionOption() {
     }
 
-    public CompletionCarOption(String idCompletion, String idOption) {
+    public CompletionOption(String idCompletion, String idOption) {
         this.idCompletion = idCompletion;
         this.idOption = idOption;
     }
@@ -30,7 +30,7 @@ public class CompletionCarOption {
 
     @Override
     public String toString() {
-        return "CompletionCarOption{" +
+        return "CompletionOption{" +
                 "idCompletion='" + idCompletion + '\'' +
                 ", idOption='" + idOption + '\'' +
                 '}';

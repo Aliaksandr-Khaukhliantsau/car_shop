@@ -2,14 +2,14 @@ package entity;
 
 public class Option {
     private String id;
-    private String optionName;
+    private String name;
 
     public Option() {
     }
 
-    public Option(String id, String optionName) {
+    public Option(String id, String name) {
         this.id = id;
-        this.optionName = optionName;
+        this.name = name;
     }
 
     public String getId() {
@@ -20,19 +20,19 @@ public class Option {
         this.id = id;
     }
 
-    public String getOptionName() {
-        return optionName;
+    public String getName() {
+        return name;
     }
 
-    public void setOptionName(String optionName) {
-        this.optionName = optionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Option{" +
                 "id='" + id + '\'' +
-                ", optionName='" + optionName + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
