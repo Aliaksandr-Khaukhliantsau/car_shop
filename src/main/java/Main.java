@@ -20,15 +20,15 @@ public class Main {
             System.out.println("5 - Delete a customer");
             System.out.println("0 - Exit");
 
-            int userCommand = scanner.nextInt();
+            String userCommand = scanner.nextLine();
 
-            if (userCommand == 0) {
+            if (userCommand.equals("0")) {
                 // Выход из программы и освобождение ресурсов
                 System.out.println("Exit from program.");
                 scanner.close();
                 System.exit(0);
 
-            } else if (userCommand == 1) {
+            } else if (userCommand.equals("1")) {
                 // Показать всех клинтов
                 List<Customer> customerList = customerService.getAllCustomers();
 
@@ -37,27 +37,26 @@ public class Main {
                 }
                 System.out.println();
 
-            } else if (userCommand == 2) {
-                // Показать клиентов по выборке
+            } else if (userCommand.equals("2")) { // Показать клиентов по выборке
                 // Меню выборки
                 while (true) {
-                    System.out.println("Select a sample");
+                    System.out.println("Select a sample:");
                     System.out.println("1 - id");
                     System.out.println("2 - First name");
                     System.out.println("3 - Middle name");
                     System.out.println("4 - Last name");
                     System.out.println("0 - Back to the previous menu");
 
-                    userCommand = scanner.nextInt();
+                    userCommand = scanner.nextLine();
 
-                    if (userCommand == 0) {
+                    if (userCommand.equals("0")) {
                         // Выход в предыдущее меню
                         System.out.println("Exit to the previous menu.\n");
                         break;
-                    } else if (userCommand == 1) {
+                    } else if (userCommand.equals("1")) {
                         // Выборка по id
                         System.out.println("Enter the id:");
-                        String id = scanner.next();
+                        String id = scanner.nextLine();
 
                         List<Customer> customerList = customerService.getById(id);
 
@@ -66,10 +65,10 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand == 2) {
+                    } else if (userCommand.equals("2")) {
                         // Выборка по имени
                         System.out.println("Enter the first name:");
-                        String firstName = scanner.next();
+                        String firstName = scanner.nextLine();
 
                         List<Customer> customerList = customerService.getByFirstName(firstName);
 
@@ -78,10 +77,10 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand == 3) {
+                    } else if (userCommand.equals("3")) {
                         // Выборка по отчеству
                         System.out.println("Enter the middle name:");
-                        String middleName = scanner.next();
+                        String middleName = scanner.nextLine();
 
                         List<Customer> customerList = customerService.getByMiddleName(middleName);
 
@@ -90,10 +89,10 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand == 4) {
+                    } else if (userCommand.equals("4")) {
                         // Выборка по фамилии
                         System.out.println("Enter the last name:");
-                        String lastName = scanner.next();
+                        String lastName = scanner.nextLine();
 
                         List<Customer> customerList = customerService.getByLastName(lastName);
 
@@ -107,14 +106,14 @@ public class Main {
                     }
                 }
 
-            } else if (userCommand == 3) {
+            } else if (userCommand.equals("3")) {
                 // Создать нового клиента
                 System.out.println("Enter the first name of the new customer:");
-                String firstName = scanner.next();
+                String firstName = scanner.nextLine();
                 System.out.println("Enter the middle name of the new customer:");
-                String middleName = scanner.next();
+                String middleName = scanner.nextLine();
                 System.out.println("Enter the last name of the new customer:");
-                String lastName = scanner.next();
+                String lastName = scanner.nextLine();
 
                 List<Customer> customerList = customerService.create(firstName, middleName, lastName);
 
@@ -124,16 +123,16 @@ public class Main {
                 }
                 System.out.println();
 
-            } else if (userCommand == 4) {
+            } else if (userCommand.equals("4")) {
                 // Изменить клиента
                 System.out.println("Enter the customer's id:");
-                String id = scanner.next();
+                String id = scanner.nextLine();
                 System.out.println("Enter a new first name for the customer's record to edit:");
-                String firstName = scanner.next();
+                String firstName = scanner.nextLine();
                 System.out.println("Enter a new middle name for the customer's record to edit:");
-                String middleName = scanner.next();
+                String middleName = scanner.nextLine();
                 System.out.println("Enter a new last name for the customer's record to edit:");
-                String lastName = scanner.next();
+                String lastName = scanner.nextLine();
 
                 List<Customer> customerList = customerService.update(id, firstName, middleName, lastName);
 
@@ -143,10 +142,10 @@ public class Main {
                 }
                 System.out.println();
 
-            } else if (userCommand == 5) {
+            } else if (userCommand.equals("5")) {
                 // Удалить клиента
                 System.out.println("Enter the customer's id:");
-                String id = scanner.next();
+                String id = scanner.nextLine();
 
                 List<Customer> customerList = customerService.delete(id);
 
