@@ -40,7 +40,7 @@ public class TestOption {
                 while (true) {
                     System.out.println("Select a sample:");
                     System.out.println("1 - id");
-                    System.out.println("2 - name");
+                    System.out.println("2 - Name");
                     System.out.println("0 - Back to the previous menu");
 
                     userCommand = scanner.nextLine();

@@ -28,9 +28,9 @@ CREATE TABLE completions
 
 CREATE TABLE completionsoptions
 (
-  	idcopmletion UUID,
+  	idcompletion UUID,
   	idoption UUID,
-  	FOREIGN KEY (idcopmletion) REFERENCES completions (id) ON DELETE CASCADE,
+  	FOREIGN KEY (idcompletion) REFERENCES completions (id) ON DELETE CASCADE,
   	FOREIGN KEY (idoption) REFERENCES options (id) ON DELETE CASCADE
 );
 
@@ -38,9 +38,9 @@ CREATE TABLE models
 (
 	id UUID DEFAULT uuid_generate_v4 (),
 	name TEXT NOT NULL,
-  	idcopmletion UUID,
+  	idcompletion UUID,
   	PRIMARY KEY (id),
-  	FOREIGN KEY (idcopmletion) REFERENCES completions (id) ON DELETE CASCADE
+  	FOREIGN KEY (idcompletion) REFERENCES completions (id) ON DELETE CASCADE
 );
 
 CREATE TABLE cars

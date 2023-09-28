@@ -16,8 +16,8 @@ public class TestCompletion {
             System.out.println("1 - Show all completions");
             System.out.println("2 - Show completions by the sample");
             System.out.println("3 - Create a new completion");
-            System.out.println("4 - Change an completion");
-            System.out.println("5 - Delete an completion");
+            System.out.println("4 - Change a completion");
+            System.out.println("5 - Delete a completion");
             System.out.println("0 - Exit");
 
             String userCommand = scanner.nextLine();
@@ -40,7 +40,7 @@ public class TestCompletion {
                 while (true) {
                     System.out.println("Select a sample:");
                     System.out.println("1 - id");
-                    System.out.println("2 - name");
+                    System.out.println("2 - Name");
                     System.out.println("0 - Back to the previous menu");
 
                     userCommand = scanner.nextLine();

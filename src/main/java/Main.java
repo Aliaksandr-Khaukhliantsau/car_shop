@@ -22,8 +22,7 @@ public class Main {
 
             String userCommand = scanner.nextLine();
 
-            if (userCommand.equals("0")) {
-                // Выход из программы и освобождение ресурсов
+            if (userCommand.equals("0")) { // Выход из программы и освобождение ресурсов
                 System.out.println("Exit from program.");
                 scanner.close();
                 System.exit(0);
@@ -49,13 +48,12 @@ public class Main {
 
                     userCommand = scanner.nextLine();
 
-                    if (userCommand.equals("0")) {
-                        // Выход в предыдущее меню
+                    if (userCommand.equals("0")) { // Выход в предыдущее меню
                         System.out.println("Exit to the previous menu.\n");
                         break;
                     } else if (userCommand.equals("1")) {
                         // Выборка по id
-                        System.out.println("Enter the id:");
+                        System.out.println("Enter the customer's id:");
                         String id = scanner.nextLine();
 
                         List<Customer> customerList = customerService.getById(id);
@@ -65,8 +63,7 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand.equals("2")) {
-                        // Выборка по имени
+                    } else if (userCommand.equals("2")) { // Выборка по имени
                         System.out.println("Enter the first name:");
                         String firstName = scanner.nextLine();
 
@@ -77,8 +74,7 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand.equals("3")) {
-                        // Выборка по отчеству
+                    } else if (userCommand.equals("3")) { // Выборка по отчеству
                         System.out.println("Enter the middle name:");
                         String middleName = scanner.nextLine();
 
@@ -89,8 +85,7 @@ public class Main {
                         }
                         System.out.println();
 
-                    } else if (userCommand.equals("4")) {
-                        // Выборка по фамилии
+                    } else if (userCommand.equals("4")) { // Выборка по фамилии
                         System.out.println("Enter the last name:");
                         String lastName = scanner.nextLine();
 
@@ -106,8 +101,7 @@ public class Main {
                     }
                 }
 
-            } else if (userCommand.equals("3")) {
-                // Создать нового клиента
+            } else if (userCommand.equals("3")) { // Создать нового клиента
                 System.out.println("Enter the first name of the new customer:");
                 String firstName = scanner.nextLine();
                 System.out.println("Enter the middle name of the new customer:");
@@ -123,8 +117,7 @@ public class Main {
                 }
                 System.out.println();
 
-            } else if (userCommand.equals("4")) {
-                // Изменить клиента
+            } else if (userCommand.equals("4")) { // Изменить клиента
                 System.out.println("Enter the customer's id:");
                 String id = scanner.nextLine();
                 System.out.println("Enter a new first name for the customer's record to edit:");
@@ -142,8 +135,7 @@ public class Main {
                 }
                 System.out.println();
 
-            } else if (userCommand.equals("5")) {
-                // Удалить клиента
+            } else if (userCommand.equals("5")) { // Удалить клиента
                 System.out.println("Enter the customer's id:");
                 String id = scanner.nextLine();
 
