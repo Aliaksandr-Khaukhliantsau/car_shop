@@ -1,6 +1,6 @@
-import entity.Option;
-import service.OptionService;
-import service.impl.OptionServiceImpl;
+import entity.Completion;
+import service.CompletionService;
+import service.impl.CompletionServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class TestCompletion {
     public static void main(String[] args) throws SQLException {
-        OptionService optionService = new OptionServiceImpl();
+        CompletionService completionService = new CompletionServiceImpl();
         Scanner scanner = new Scanner(System.in);
 
         // Основное меню
         while (true) {
-            System.out.println("1 - Show all options");
-            System.out.println("2 - Show options by the sample");
-            System.out.println("3 - Create a new option");
-            System.out.println("4 - Change an option");
-            System.out.println("5 - Delete an option");
+            System.out.println("1 - Show all completions");
+            System.out.println("2 - Show completions by the sample");
+            System.out.println("3 - Create a new completion");
+            System.out.println("4 - Change an completion");
+            System.out.println("5 - Delete an completion");
             System.out.println("0 - Exit");
 
             String userCommand = scanner.nextLine();
@@ -27,15 +27,15 @@ public class TestCompletion {
                 scanner.close();
                 System.exit(0);
 
-            } else if (userCommand.equals("1")) { // Показать все опции
-                List<Option> optionList = optionService.getAllOptions();
+            } else if (userCommand.equals("1")) { // Показать все комплектации
+                List<Completion> completionList = completionService.getAllCompletions();
 
-                for (Option option : optionList) {
-                    System.out.println(option);
+                for (Completion completion : completionList) {
+                    System.out.println(completion);
                 }
                 System.out.println();
 
-            } else if (userCommand.equals("2")) { // Показать опции по выборке
+            } else if (userCommand.equals("2")) { // Показать комплектации по выборке
                 // Меню выборки
                 while (true) {
                     System.out.println("Select a sample:");
@@ -53,10 +53,10 @@ public class TestCompletion {
                         System.out.println("Enter the id:");
                         String id = scanner.nextLine();
 
-                        List<Option> optionList = optionService.getById(id);
+                        List<Completion> completionList = completionService.getById(id);
 
-                        for (Option option : optionList) {
-                            System.out.println(option);
+                        for (Completion completion : completionList) {
+                            System.out.println(completion);
                         }
                         System.out.println();
 
@@ -64,10 +64,10 @@ public class TestCompletion {
                         System.out.println("Enter the name:");
                         String name = scanner.nextLine();
 
-                        List<Option> optionList = optionService.getByName(name);
+                        List<Completion> completionList = completionService.getByName(name);
 
-                        for (Option option : optionList) {
-                            System.out.println(option);
+                        for (Completion completion : completionList) {
+                            System.out.println(completion);
                         }
                         System.out.println();
 
@@ -76,41 +76,41 @@ public class TestCompletion {
                     }
                 }
 
-            } else if (userCommand.equals("3")) { // Создать новую опцию
-                System.out.println("Enter the name of the new option:");
+            } else if (userCommand.equals("3")) { // Создать новую комплектацию
+                System.out.println("Enter the name of the new completion:");
                 String name = scanner.nextLine();
 
-                List<Option> optionList = optionService.create(name);
+                List<Completion> completionList = completionService.create(name);
 
-                System.out.println("New option's record has been created:");
-                for (Option option : optionList) {
-                    System.out.println(option);
+                System.out.println("New completion's record has been created:");
+                for (Completion completion : completionList) {
+                    System.out.println(completion);
                 }
                 System.out.println();
 
-            } else if (userCommand.equals("4")) { // Изменить опцию
-                System.out.println("Enter the option's id:");
+            } else if (userCommand.equals("4")) { // Изменить комплектацию
+                System.out.println("Enter the completion's id:");
                 String id = scanner.nextLine();
-                System.out.println("Enter a new name for the option's record to edit:");
+                System.out.println("Enter a new name for the completion's record to edit:");
                 String name = scanner.nextLine();
 
-                List<Option> optionList = optionService.update(id, name);
+                List<Completion> completionList = completionService.update(id, name);
 
-                System.out.println("The option's record has been changed:");
-                for (Option option : optionList) {
-                    System.out.println(option);
+                System.out.println("The completion's record has been changed:");
+                for (Completion completion : completionList) {
+                    System.out.println(completion);
                 }
                 System.out.println();
 
-            } else if (userCommand.equals("5")) { // Удалить опцию
-                System.out.println("Enter the option's id:");
+            } else if (userCommand.equals("5")) { // Удалить комплектацию
+                System.out.println("Enter the completion's id:");
                 String id = scanner.nextLine();
 
-                List<Option> optionList = optionService.delete(id);
+                List<Completion> completionList = completionService.delete(id);
 
-                System.out.println("The option's record has been deleted:");
-                for (Option option : optionList) {
-                    System.out.println(option);
+                System.out.println("The completion's record has been deleted:");
+                for (Completion completion : completionList) {
+                    System.out.println(completion);
                 }
                 System.out.println();
 
@@ -119,6 +119,4 @@ public class TestCompletion {
             }
         }
     }
-}
-
 }
