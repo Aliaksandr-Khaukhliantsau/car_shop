@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS options, cars, completions, completionsoptions, models, cus
 DROP EXTENSION IF EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE Customers
+CREATE TABLE customers
 (
 	id UUID DEFAULT uuid_generate_v4 (),
   	firstname TEXT NOT NULL,
