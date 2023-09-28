@@ -76,7 +76,7 @@ public class TestModel {
                         System.out.println("Enter the completion's id:");
                         String idCompletion = scanner.nextLine();
 
-                        List<Model> modelList = modelService.getByName(idCompletion);
+                        List<Model> modelList = modelService.getByIdCompletion(idCompletion);
 
                         for (Model model : modelList) {
                             System.out.println(model);

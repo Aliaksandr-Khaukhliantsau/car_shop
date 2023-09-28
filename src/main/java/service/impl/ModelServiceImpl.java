@@ -25,7 +25,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -41,7 +41,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -57,7 +57,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -73,7 +73,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -89,7 +89,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -105,7 +105,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }
@@ -121,7 +121,7 @@ public class ModelServiceImpl implements ModelService {
             Model model = new Model();
             model.setId(resultSet.getString("id"));
             model.setName(resultSet.getString("name"));
-            model.setName(resultSet.getString("idcompletion"));
+            model.setIdCompletion(resultSet.getString("idcompletion"));
 
             modelList.add(model);
         }

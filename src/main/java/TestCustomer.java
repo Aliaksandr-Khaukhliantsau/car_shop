@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class TestCustomer {
     public static void main(String[] args) throws SQLException {
         CustomerService customerService = new CustomerServiceImpl();
         Scanner scanner = new Scanner(System.in);
