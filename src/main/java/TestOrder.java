@@ -41,7 +41,7 @@ public class TestOrder {
                     System.out.println("1 - id");
                     System.out.println("2 - Number");
                     System.out.println("3 - Customer's id");
-                    System.out.println("3 - Car's id");
+                    System.out.println("4 - Car's id");
                     System.out.println("0 - Back to the previous menu");
 
                     userCommand = scanner.nextLine();
@@ -63,7 +63,7 @@ public class TestOrder {
 
                     } else if (userCommand.equals("2")) { // Выборка по номеру заказа
                         System.out.println("Enter the number:");
-                        int number = scanner.nextInt();
+                        String number = scanner.nextLine();
 
                         List<Order> orderList = orderService.getByNumber(number);
 
@@ -76,7 +76,7 @@ public class TestOrder {
                         System.out.println("Enter the customer's id:");
                         String idCustomer = scanner.nextLine();
 
-                        List<Order> orderList = orderService.getByCustomer(idCustomer);
+                        List<Order> orderList = orderService.getByIdCustomer(idCustomer);
 
                         for (Order order : orderList) {
                             System.out.println(order);
@@ -101,11 +101,11 @@ public class TestOrder {
 
             } else if (userCommand.equals("3")) { // Создать новый заказ
                 System.out.println("Enter the customer's id of the new order:");
-                String idUser = scanner.nextLine();
+                String idCustomer = scanner.nextLine();
                 System.out.println("Enter the car's id of the new order:");
                 String idCar = scanner.nextLine();
 
-                List<Order> orderList = orderService.create(idUser, idCar);
+                List<Order> orderList = orderService.create(idCustomer, idCar);
 
                 System.out.println("New order's record has been created:");
                 for (Order order : orderList) {
@@ -114,12 +114,14 @@ public class TestOrder {
                 System.out.println();
 
             } else if (userCommand.equals("4")) { // Изменить заказ
+                System.out.println("Enter the order's id:");
+                String id = scanner.nextLine();
                 System.out.println("Enter a new customer's id for the order's record to edit:");
                 String idCustomer = scanner.nextLine();
                 System.out.println("Enter a new car's id for the order's record to edit:");
                 String idCar = scanner.nextLine();
 
-                List<Order> orderList = orderService.create(idCustomer, idCar);
+                List<Order> orderList = orderService.update(id, idCustomer, idCar);
 
                 System.out.println("The order's record has been changed:");
                 for (Order order : orderList) {

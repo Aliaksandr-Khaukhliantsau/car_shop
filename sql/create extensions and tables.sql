@@ -31,7 +31,8 @@ CREATE TABLE completionsoptions
   	idcompletion UUID,
   	idoption UUID,
   	FOREIGN KEY (idcompletion) REFERENCES completions (id) ON DELETE CASCADE,
-  	FOREIGN KEY (idoption) REFERENCES options (id) ON DELETE CASCADE
+  	FOREIGN KEY (idoption) REFERENCES options (id) ON DELETE CASCADE,
+  	PRIMARY KEY (idcompletion, idoption)
 );
 
 CREATE TABLE models 

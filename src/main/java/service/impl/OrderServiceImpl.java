@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getByNumber(int number) throws SQLException {
+    public List<Order> getByNumber(String number) throws SQLException {
         ResultSet resultSet = orderRepository.getByNumber(number);
         List<Order> orderList = new ArrayList<>();
 
@@ -51,8 +51,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getByCustomer(String idUser) throws SQLException {
-        ResultSet resultSet = orderRepository.getByIdUser(idUser);
+    public List<Order> getByIdCustomer(String idCustomer) throws SQLException {
+        ResultSet resultSet = orderRepository.getByIdCustomer(idCustomer);
         List<Order> orderList = new ArrayList<>();
 
         while (resultSet.next()) {
@@ -102,8 +102,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> create(String idUser, String idCar) throws SQLException {
-        ResultSet resultSet = orderRepository.create(idUser, idCar);
+    public List<Order> create(String idCustomer, String idCar) throws SQLException {
+        ResultSet resultSet = orderRepository.create(idCustomer, idCar);
         List<Order> orderList = new ArrayList<>();
 
         while (resultSet.next()) {
@@ -119,8 +119,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> update(String id, String idUser, String idCar) throws SQLException {
-        ResultSet resultSet = orderRepository.update(id, idUser, idCar);
+    public List<Order> update(String id, String idCustomer, String idCar) throws SQLException {
+        ResultSet resultSet = orderRepository.update(id, idCustomer, idCar);
         List<Order> orderList = new ArrayList<>();
 
         while (resultSet.next()) {

@@ -25,7 +25,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public ResultSet getByNumber(int number) throws SQLException {
+    public ResultSet getByNumber(String number) throws SQLException {
         Statement statement = connection.createStatement();
         String SQL_SHOW_ORDERS_BY_NUMBER = "SELECT * FROM orders WHERE number = " + "'" + number + "'" + " ORDER BY number ASC;";
         ResultSet resultSet = statement.executeQuery(SQL_SHOW_ORDERS_BY_NUMBER);
@@ -34,9 +34,9 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public ResultSet getByIdUser(String idUser) throws SQLException {
+    public ResultSet getByIdCustomer(String idCustomer) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_SHOW_ORDERS_BY_ID_USER = "SELECT * FROM orders WHERE iduser = " + "'" + idUser + "'" + " ORDER BY number ASC;";
+        String SQL_SHOW_ORDERS_BY_ID_USER = "SELECT * FROM orders WHERE idcustomer = " + "'" + idCustomer + "'" + " ORDER BY number ASC;";
         ResultSet resultSet = statement.executeQuery(SQL_SHOW_ORDERS_BY_ID_USER);
 //        statement.close();
         return resultSet;
@@ -60,18 +60,18 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public ResultSet create(String idUser, String idCar) throws SQLException {
+    public ResultSet create(String idCustomer, String idCar) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_ADD_A_NEW_ORDER = "INSERT INTO orders (iduser, idcar) VALUES ('" + idUser + "', '" + idCar + "') RETURNING *;";
+        String SQL_ADD_A_NEW_ORDER = "INSERT INTO orders (idcustomer, idcar) VALUES ('" + idCustomer + "', '" + idCar + "') RETURNING *;";
         ResultSet resultSet = statement.executeQuery(SQL_ADD_A_NEW_ORDER);
 //        statement.close();
         return resultSet;
     }
 
     @Override
-    public ResultSet update(String id, String idUser, String idCar) throws SQLException {
+    public ResultSet update(String id, String idCustomer, String idCar) throws SQLException {
         Statement statement = connection.createStatement();
-        String SQL_CHANGE_AN_ORDER = "UPDATE orders SET iduser = '" + idUser + "', idcar = '" + idCar + "' WHERE id = '" + id + "' RETURNING *;";
+        String SQL_CHANGE_AN_ORDER = "UPDATE orders SET idcustomer = '" + idCustomer + "', idcar = '" + idCar + "' WHERE id = '" + id + "' RETURNING *;";
         ResultSet resultSet = statement.executeQuery(SQL_CHANGE_AN_ORDER);
 //        statement.close();
         return resultSet;

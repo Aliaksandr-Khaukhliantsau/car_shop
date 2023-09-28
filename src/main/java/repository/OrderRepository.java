@@ -7,17 +7,17 @@ public interface OrderRepository {
 
     ResultSet getById(String id) throws SQLException;
 
-    ResultSet getByNumber(int number) throws SQLException;
+    ResultSet getByNumber(String number) throws SQLException;
 
-    ResultSet getByIdUser(String idUser) throws SQLException;
+    ResultSet getByIdCustomer(String idCustomer) throws SQLException;
 
     ResultSet getByIdCar(String idCar) throws SQLException;
 
     ResultSet getAllOrders() throws SQLException;
 
-    ResultSet create(String idUser, String idCar) throws SQLException;
+    ResultSet create(String idCustomer, String idCar) throws SQLException;
 
-    ResultSet update(String id, String idUser, String idCar) throws SQLException;
+    ResultSet update(String id, String idCustomer, String idCar) throws SQLException;
 
     ResultSet delete(String id) throws SQLException;
 }
