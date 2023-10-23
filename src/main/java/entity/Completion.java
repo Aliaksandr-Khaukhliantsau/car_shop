@@ -1,38 +1,50 @@
 package entity;
 
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * The Completion class is an entity representing a car completion.
+ *
+ * @author Aliaksandr Khaukhliantsau
+ * @version 1.0
+ */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Completion {
-    private String id;
-    private String name;
 
-    public Completion() {
-    }
+    /**
+     * Unique identifier for the car completion.
+     */
+    private UUID id;
 
-    public Completion(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    /**
+     * Name of the car completion.
+     */
+    private String completionName;
 
-    public String getId() {
-        return id;
-    }
+    /**
+     * A list of Setting instances representing the settings of the car completion.
+     */
+    private List<Setting> settings;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Completion{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    /**
+     * Adds a setting to the list of car settings. If the list is null, it initializes a new ArrayList and adds the Setting to it.
+     *
+     * @param setting the Setting to be added to the list of car settings.
+     */
+    public void addSetting(Setting setting) {
+        if (this.settings != null) {
+            this.settings.add(setting);
+        } else {
+            this.settings = new ArrayList<>();
+            this.settings.add(setting);
+        }
     }
 }
